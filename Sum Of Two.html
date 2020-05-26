@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Of Two</title>
+    <style>
+        #renderedScript
+        {
+            font-size: 14px;
+            font-family: monaco;
+        }
+    </style>
+</head>
+<body>
+
+    <pre id="renderedScript">
+
+    </pre>   
+    
+</body>
+    <script id="myScript">
+
+
+        InitApp();
+
+        function InitApp()
+        {
+            let array = [2, 7, 11, 15]; 
+            let target = 9;  
+
+            console.log(SumOfTwoV2(array, target));
+
+        }
+
+        function SumOfTwoV2(array, target) // via 1 loop
+        {
+            let visitedValues = [];
+
+            for (let index = 0; index < array.length; index++) {
+
+                const currentNumber = array[index];
+                const neededValue = target - currentNumber;
+                const index2 = visitedValues[neededValue];
+
+                if (index2 != null) {
+                    return [index2, index];
+                } else {
+                    visitedValues[currentNumber] = index;
+                }
+                
+            }
+            
+
+            // Personal Notes For Algo
+            /*
+            
+                Target = 11 + 2 = 13;
+                Needed Value = 13 - 2 = 11 
+
+                ------
+
+                Target = 2 + 15 = 17;
+                Needed Value = 17 - 2 = 15 
+
+                -------------
+                -------------
+
+                [3, 15, 16, 20];
+
+
+                Target = 3 + 5 = 18;
+                Needed Value = 18 - 2 = 16 
+
+            */
+
+        }
+
+        function SumOfTwo(array, target) // via 2 loop
+        {
+            
+
+            for (let index = 0; index < array.length; index++) {
+                const element = array[index];
+                
+                for (let index1 = 0; index1 < array.length; index1++) {
+                    
+                    let item = array[index] + array[index1];
+                    if (item == target)
+                       { 
+                           return item;
+                       }   
+                    
+                }
+
+                
+            }    
+        }
+       
+
+    </script>
+
+
+    <script>
+
+            let myScript = document.getElementById('myScript');
+            let preDiv = document.getElementById('renderedScript');
+
+            preDiv.innerHTML = myScript.innerHTML;
+
+    </script>
+</html>

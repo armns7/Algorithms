@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search</title>
+    <style>
+        #renderedScript
+        {
+            font-size: 14px;
+            font-family: monaco;
+        }
+    </style>
+</head>
+<body>
+
+    <pre id="renderedScript">
+
+    </pre>   
+    
+</body>
+    <script id="myScript">
+
+
+        InitApp();
+
+        function InitApp()
+        {
+            let array = [0,1,2,3,4,5,6,7,8,9]; // Array must be sorted
+
+            console.log(FindRecrusive(array, 1));
+        }
+
+        function FindRecrusive(array, query) 
+        {
+            return DoFindRecrusive(array, 0, array.length, query);    
+        }
+
+        function DoFindRecrusive(array, start, end, query) 
+        {
+            if (end < start) // BaseCase 
+                return -1;
+
+            let middle = parseInt( start+end / 2 );
+
+            if (array[middle] == query) 
+                return 0;
+            else if( query < array[middle] )
+                return  DoFindRecrusive(array, start, middle - 1, query )
+            else 
+                return  DoFindRecrusive(array, middle + 1 , end, query )
+        }
+
+    </script>
+
+
+    <script>
+
+            let myScript = document.getElementById('myScript');
+            let preDiv = document.getElementById('renderedScript');
+
+            preDiv.innerHTML = myScript.innerHTML;
+
+    </script>
+</html>

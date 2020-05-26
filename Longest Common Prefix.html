@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Longest Common Prefix</title>
+    <style>
+        #renderedScript
+        {
+            font-size: 14px;
+            font-family: monaco;
+        }
+
+        body
+        {
+            background: black;
+            color: lawngreen;
+        }
+    </style>
+</head>
+<body>
+
+    <pre id="renderedScript">
+
+    </pre>   
+    
+</body>
+    <script id="myScript">
+
+        function GetLongestCommonPrefix(array) 
+        {
+            let commonPrefix = [];
+
+            // for (let index = 0; index < array.length; index++) {
+                
+            //     const currentWord = array[index];
+                
+            //     for (let index1 = 0; index1 < currentWord.length; index1++) {
+                
+            //         const currentWordsCurrentCharacter = currentWord[index1];
+                    
+            //         // Check if currentWordsCurrentCharacter is present on all words at index1
+            //         // If present add in commonPrefixArray
+
+            //         let isPresentOnAllWords = true;
+
+            //         for (let index2 = 0; index2 < array.length; index2++) 
+            //         {
+            //             const wordToBeChecked = array[index2];
+            //             if (wordToBeChecked[index1] != currentWordsCurrentCharacter)
+            //                 isPresentOnAllWords = false;
+            //         }
+                    
+            //         if (isPresentOnAllWords == true && commonPrefix.indexOf(currentWordsCurrentCharacter) == -1) // not  already added in common prefix
+            //             commonPrefix.push(currentWordsCurrentCharacter);
+
+            //         // PrintOnConsole( `${currentWord} : ${currentWordsCurrentCharacter}`);
+
+            //     }
+                
+            // }
+
+            // console.dir(commonPrefix);
+
+
+            // PrintOnConsole("-------");
+
+           
+            let prefix = '';
+            if (array.length == 0) 
+                return prefix;    
+            
+            for (let index = 0; index < array.length; index++) {
+            {
+                const characterToSearch = array[0][index];
+                
+                PrintOnConsole('Search Character: ' + characterToSearch);
+
+                for (let index1 = 0; index1 < array.length; index1++) 
+                {
+                    let currentWord = array[index1];
+                    let characterOfCurrentWord = currentWord[index];
+                    
+                    console.log('Current Character of Current Word: ' + characterOfCurrentWord);
+
+                    if (characterOfCurrentWord != characterToSearch)
+                    { 
+                        PrintOnConsole('Prefix: ' + prefix);
+                        return prefix;
+                    };
+                }
+
+                prefix = prefix + characterToSearch;
+            }
+                    
+                    
+        }
+    }
+
+
+
+        let PrintOnConsole =  (...params) => params.forEach(param => console.dir(param));    
+
+        function InitApp()
+        {
+            const array =  ["flower","flow","flight","flush"];
+            
+            let result = GetLongestCommonPrefix(array);
+
+
+            PrintOnConsole(result);
+
+        }
+
+        InitApp();
+
+
+    </script>
+
+
+    <script>
+
+            let myScript = document.getElementById('myScript');
+            let preDiv = document.getElementById('renderedScript');
+
+            preDiv.innerHTML = myScript.innerHTML;
+
+    </script>
+</html>
